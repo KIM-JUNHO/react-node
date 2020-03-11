@@ -1,31 +1,37 @@
 import * as React from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_RULE, DELETE_RULE } from '../utils/gql';
+import { ADD_RULE } from '../utils/gql';
+import { Formik, Field, Form } from 'formik';
+import { ruleValidation } from '../utils/validation';
 
 export default function Request() {
   const [createRule] = useMutation(ADD_RULE);
-  const [deleteRule] = useMutation(DELETE_RULE);
-  return (
-    <>
-      <button
-        onClick={() =>
-          createRule({
-            variables: { srcAddr: '70.80.151.11', dstAddr: '182.195.89.114' }
-          })
-        }
-      >
-        Add
-      </button>
 
-      <button
-        onClick={() =>
-          deleteRule({
-            variables: { id: 13 }
-          })
-        }
-      >
-        Delete
-      </button>
-    </>
+  return (
+    <Formik
+      initialValues={{ srcAddr: '', dstAddr: '' }}
+      onSubmit={(data, { setSubmitting }) => {
+        setSubmitting(true);
+        // make async call
+        createRule({
+          variables: { srcAddr: data.srcAddr, dstAddr: data.dstAddr }
+        });
+        console.log('submit : ', data);
+        setSubmitting(false);
+      }}
+      validationSchema={ruleValidation}
+    >
+      {({ values, errors, isSubmitting, handleSubmit }) => (
+        <Form>
+          <Field name="srcAddr" type="input" />
+          <Field name="dstAddr" type="input" />
+          <div>
+            <button type="submit">add</button>
+          </div>
+          <pre>{JSON.stringify(values, null, 2)}</pre>
+          <pre>{JSON.stringify(errors, null, 2)}</pre>
+        </Form>
+      )}
+    </Formik>
   );
 }
