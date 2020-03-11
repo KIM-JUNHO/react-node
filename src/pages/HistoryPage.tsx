@@ -2,10 +2,10 @@ import * as React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_RULES } from '../utils/gql';
 
-export default function History() {
+export default function HistoryPage() {
   const { loading, error, data } = useQuery(GET_RULES);
   if (loading) {
-    return 'loading...';
+    return <div>loading...</div>;
   }
   if (data && data.Rules) {
     return (
@@ -28,5 +28,7 @@ export default function History() {
         </tbody>
       </table>
     );
+  } else {
+    return <div>no data found</div>;
   }
 }

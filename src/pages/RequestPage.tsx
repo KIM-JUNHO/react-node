@@ -4,7 +4,7 @@ import { ADD_RULE } from '../utils/gql';
 import { Formik, Field, Form } from 'formik';
 import { ruleValidation } from '../utils/validation';
 
-export default function Request() {
+export default function RequestPage() {
   const [createRule] = useMutation(ADD_RULE);
 
   return (
