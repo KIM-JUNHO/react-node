@@ -6,6 +6,12 @@ export const ADD_RULE = gql`
   }
 `;
 
+export const DELETE_RULE = gql`
+  mutation deleteRule($id: Int!) {
+    deleteRule(id: $id)
+  }
+`;
+
 export const GET_RULES = gql`
   {
     Rules {
