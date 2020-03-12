@@ -14,7 +14,7 @@ export default function Navigation() {
             >
               FPMS Rules
             </Link>
-            <div className="hidden md:block">
+            <div>
               <div className="ml-8 flex items-baseline">
                 <Link
                   to="/"
