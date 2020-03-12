@@ -20,9 +20,12 @@
     "reactstrap": "^8.4.1",
     "styled-components": "^5.0.1",
     "tabler-react": "^1.30.1",
+    "tailwindcss": "^1.2.0",
     "yup": "^0.28.3"
   },
   "scripts": {
+    "build:styles": "npx tailwindcss build src/utils/tailwind.css -o src/index.css",
+    "prestart": "yarn build:styles",
     "start": "parcel src/index.html"
   },
   "devDependencies": {
