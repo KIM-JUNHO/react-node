@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_RULE } from '../utils/gql';
+import { ADD_RULE, GET_RULES } from '../utils/gql';
 import { Formik, Field, Form } from 'formik';
 import { ruleValidation } from '../utils/validation';
 import Grid from '@material-ui/core/Grid';
@@ -21,7 +21,8 @@ export default function RequestPage() {
           setSubmitting(true);
           // make async call
           createRule({
-            variables: { srcAddr: data.srcAddr, dstAddr: data.dstAddr }
+            variables: { srcAddr: data.srcAddr, dstAddr: data.dstAddr },
+            refetchQueries: [{ query: GET_RULES }]
           });
           console.log('submit : ', data);
           setSubmitting(false);
