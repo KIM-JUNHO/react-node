@@ -33,7 +33,6 @@ export default function RequestPage() {
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  required
                   id="username"
                   name="username"
                   label="Name"
@@ -42,7 +41,6 @@ export default function RequestPage() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  required
                   id="department"
                   name="department"
                   label="Department"
@@ -51,7 +49,6 @@ export default function RequestPage() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
                   id="reason"
                   name="reason"
                   label="Reason"
@@ -84,17 +81,10 @@ export default function RequestPage() {
                 </Field>
               </Grid>
               <Grid item xs={6} sm={3}>
-                <TextField
-                  required
-                  id="dstPort"
-                  name="dstPort"
-                  label="Port"
-                  fullWidth
-                />
+                <TextField id="dstPort" name="dstPort" label="Port" fullWidth />
               </Grid>
               <Grid item xs={6} sm={3}>
                 <TextField
-                  required
                   id="protocol"
                   name="protocol"
                   label="Protocol"
