@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Container } from '@material-ui/core';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_RULES } from '../utils/gql';
+import PageContainer from '../components/PageContainer';
 
 export default function HistoryPage() {
   const { loading, error, data } = useQuery(GET_RULES);
@@ -10,8 +11,8 @@ export default function HistoryPage() {
   }
   if (data && data.Rules) {
     return (
-      <Container>
-        <div className="flex flex-col mt-10">
+      <PageContainer>
+        <div className="flex flex-col mt-4">
           <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div className="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
               <table className="min-w-full">
@@ -47,7 +48,7 @@ export default function HistoryPage() {
             </div>
           </div>
         </div>
-      </Container>
+      </PageContainer>
     );
   } else {
     return <div>no data found</div>;
